@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Jotham L. Pahamutang, a BSIT student and developer focused on creating practical, responsive, and user-friendly web and mobile systems.">
+  <title>Home — Portfolio Dossier</title>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2.0.0">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Mobile Top Header -->
+    <header class="mobile-header">
+      <div class="mobile-brand">Portfolio</div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </header>
+
+    <!-- Top Navigation Bar / Mobile Drawer -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Brand (desktop: shown in nav bar; mobile: hidden, shown in mobile-header instead) -->
+      <div class="sidebar-brand">Portfolio</div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav-container">
+        <div class="nav-group">
+          <div class="nav-group-title">Navigation</div>
+          <a href="index.html" class="nav-item active">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </a>
+
+          <a href="activities.html" class="nav-item">
+            <i data-lucide="folder-open"></i>
+            <span>Activities</span>
+          </a>
+
+          <a href="certificates.html" class="nav-item">
+            <i data-lucide="award"></i>
+            <span>My Certificates</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Footer (location chip, inline on desktop / stacked on mobile) -->
+      <div class="sidebar-footer">
+        <div class="footer-location">
+          <span class="loc-title">
+            <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
+            Guipos, Zamboanga del Sur
+          </span>
+          <span class="loc-detail">Philippines</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Pane -->
+    <main class="main-content">
+      <div class="content-wrapper">
+
+        <!-- Hero Section -->
+        <section id="home" class="hero-section stagger-in">
+
+          <!-- Portrait Column — glowing ring avatar -->
+          <div class="hero-image-col">
+            <div class="hero-portrait-card">
+              <img
+                src="image.jpg"
+                alt="Portrait of Jotham L. Pahamutang"
+                class="hero-avatar"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22168%22 height=%22168%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230A0F1E%22/><text x=%2250%25%22 y=%2252%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2228%22 fill=%2206B6D4%22>JLP</text></svg>';"
+              >
+            </div>
+          </div>
+
+          <!-- Text Column -->
+          <div class="hero-text-col">
+            <h1 class="hero-name-heading">Jotham L. Pahamutang</h1>
+
+            <div class="hero-bio-container">
+              <p class="hero-bio-p">
+                As a BSIT student, I am driven by a strong passion for technology and a commitment to continuous growth. I find purpose in building practical systems, exploring innovative solutions, and turning ideas into reality. Each project I take on sharpens my abilities and strengthens my approach to problem-solving.
+              </p>
+              <p class="hero-bio-p">
+                Through hands-on projects and academic activities, I constantly expand my skill set and deepen my understanding of the field. Every challenge and setback becomes a valuable lesson — fueling my development and shaping me into a more capable and well-rounded IT professional.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Quick Entry-point Cards -->
+        <section class="stats-section">
+          <div class="stats-grid stagger-in">
+
+            <div class="stat-card dashboard-card">
+              <div class="stat-icon-chip"><i data-lucide="user-round"></i></div>
+              <div>
+                <div class="stat-num">About Me</div>
+                <div class="stat-label">Background &amp; personal details</div>
+              </div>
+              <span class="stat-card-open">Open <i data-lucide="arrow-right"></i></span>
+            </div>
+
+            <div class="stat-card dashboard-card">
+              <div class="stat-icon-chip"><i data-lucide="sparkles"></i></div>
+              <div>
+                <div class="stat-num">Hobbies &amp; Favorites</div>
+                <div class="stat-label">What I enjoy and what I love</div>
+              </div>
+              <span class="stat-card-open">Open <i data-lucide="arrow-right"></i></span>
+            </div>
+
+            <div class="stat-card dashboard-card">
+              <div class="stat-icon-chip"><i data-lucide="mail"></i></div>
+              <div>
+                <div class="stat-num">Contact Me</div>
+                <div class="stat-label">Email, number &amp; socials</div>
+              </div>
+              <span class="stat-card-open">Open <i data-lucide="arrow-right"></i></span>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Modal Popup Overlay -->
+  <div id="stat-modal" class="modal-overlay">
+    <div class="modal-card">
+      <header class="modal-header">
+        <h3 id="modal-title">About Me</h3>
+        <button id="modal-close" class="modal-close-btn" aria-label="Close Pop-up">
+          <i data-lucide="x"></i>
+        </button>
+      </header>
+      <div id="modal-content" class="modal-content-area">
+        <!-- Dynamic content injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Lucide CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Interactive Script -->
+  <script src="app.js" defer></script>
+</body>
+</html>

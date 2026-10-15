@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Activities — Portfolio of Jotham L. Pahamutang. Academic reflections and coursework documents.">
+  <title>Activities — Portfolio Dossier</title>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2.0.0">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Mobile Top Header -->
+    <header class="mobile-header">
+      <div class="mobile-brand">Portfolio</div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </header>
+
+    <!-- Top Navigation Bar / Mobile Drawer -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Brand (desktop: shown in nav bar; mobile: hidden, shown in mobile-header instead) -->
+      <div class="sidebar-brand">Portfolio</div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav-container">
+        <div class="nav-group">
+          <div class="nav-group-title">Navigation</div>
+          <a href="index.html" class="nav-item">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </a>
+
+          <a href="activities.html" class="nav-item active">
+            <i data-lucide="folder-open"></i>
+            <span>Activities</span>
+          </a>
+
+          <a href="certificates.html" class="nav-item">
+            <i data-lucide="award"></i>
+            <span>My Certificates</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Footer (location chip, inline on desktop / stacked on mobile) -->
+      <div class="sidebar-footer">
+        <div class="footer-location">
+          <span class="loc-title">
+            <i data-lucide="map-pin" style="width:13px;height:13px;"></i>
+            Guipos, Zamboanga del Sur
+          </span>
+          <span class="loc-detail">Philippines</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Pane -->
+    <main class="main-content">
+      <div class="content-wrapper">
+
+        <!-- Page Header & Sort Control -->
+        <div class="reflection-page-header activities-page-header">
+          <div>
+            <span class="doc-badge">Overview</span>
+            <h1 class="page-title">Activities</h1>
+          </div>
+
+          <!-- Sort control dropdown -->
+          <div class="activities-sort">
+            <label for="activities-sort" class="activities-sort-label">Sort by</label>
+            <div class="activities-sort-control">
+              <select id="activities-sort" class="activities-sort-select">
+                <option value="latest">Latest</option>
+                <option value="oldest">Oldest</option>
+                <option value="az">Title A-Z</option>
+              </select>
+              <i data-lucide="chevron-down" class="activities-sort-chevron"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activities List View -->
+        <div class="activities-list-container stagger-in" id="activities-list">
+
+          <!-- Card 1 -->
+          <div class="activity-card" data-date="2026-08" data-title="Becoming a Professional IT Practitioner">
+            <div class="activity-info">
+              <div class="activity-meta">
+                <span class="activity-badge">Reflection 1</span>
+              </div>
+              <h2 class="activity-title">Becoming a Professional IT Practitioner</h2>
+            </div>
+            <div class="activity-actions">
+              <!-- View Activity: opens .docx rendered inside the modal viewer -->
+              <button class="btn-primary view-activity-btn"
+                      data-docx="assets/Becoming a Professional IT Practitioner.docx"
+                      data-title="Becoming a Professional IT Practitioner">
+                <i data-lucide="eye"></i> View
+              </button>
+              <!-- Download: saves the actual .docx file -->
+              <a href="assets/Becoming a Professional IT Practitioner.docx" download
+                 class="btn-primary btn-primary-outline">
+                <i data-lucide="download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="activity-card" data-date="2026-09" data-title="Introduction to AI Literacy and Responsible Use">
+            <div class="activity-info">
+              <div class="activity-meta">
+                <span class="activity-badge">Reflection 2</span>
+              </div>
+              <h2 class="activity-title">Introduction to AI Literacy and Responsible Use</h2>
+            </div>
+            <div class="activity-actions">
+              <!-- View Activity: opens .docx rendered inside the modal viewer -->
+              <button class="btn-primary view-activity-btn"
+                      data-docx="assets/Introduction to AI Literacy and Responsible Use.docx"
+                      data-title="Introduction to AI Literacy and Responsible Use">
+                <i data-lucide="eye"></i> View
+              </button>
+              <!-- Download: saves the actual .docx file -->
+              <a href="assets/Introduction to AI Literacy and Responsible Use.docx" download
+                 class="btn-primary btn-primary-outline">
+                <i data-lucide="download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Reflection 3: Application Letter -->
+          <div class="activity-card" data-date="2026-10" data-title="Application Letter">
+            <div class="activity-info">
+              <div class="activity-meta">
+                <span class="activity-badge">Reflection 3</span>
+              </div>
+              <h3 class="activity-title">Application Letter</h3>
+            </div>
+            <div class="activity-actions">
+              <button class="btn-primary view-activity-btn"
+                      data-pdf="assets/Application Letter.pdf"
+                      data-title="Application Letter">
+                <i data-lucide="eye"></i> View
+              </button>
+              <a href="assets/Application Letter.pdf" download
+                 class="btn-primary btn-primary-outline">
+                <i data-lucide="download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Reflection 4: Reflection Paper on Learning Soft Skills -->
+          <div class="activity-card" data-date="2026-11" data-title="Reflection Paper on Learning Soft Skills">
+            <div class="activity-info">
+              <div class="activity-meta">
+                <span class="activity-badge">Reflection 4</span>
+              </div>
+              <h3 class="activity-title">Reflection Paper on Learning Soft Skills</h3>
+            </div>
+            <div class="activity-actions">
+              <button class="btn-primary view-activity-btn"
+                      data-docx="assets/Reflection Paper on Learning Soft Skills.docx"
+                      data-title="Reflection Paper on Learning Soft Skills">
+                <i data-lucide="eye"></i> View
+              </button>
+              <a href="assets/Reflection Paper on Learning Soft Skills.docx" download
+                 class="btn-primary btn-primary-outline">
+                <i data-lucide="download"></i> Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Reflection 5: Building Your IT Career -->
+          <div class="activity-card" data-date="2026-12" data-title="Building Your IT Career">
+            <div class="activity-info">
+              <div class="activity-meta">
+                <span class="activity-badge">Reflection 5</span>
+              </div>
+              <h3 class="activity-title">Building Your IT Career</h3>
+            </div>
+            <div class="activity-actions">
+              <button class="btn-primary view-activity-btn"
+                      data-pdf="assets/Reflection Paper Build Your IT Career.pdf"
+                      data-title="Reflection 5: Building Your IT Career">
+                <i data-lucide="eye"></i> View
+              </button>
+              <a href="assets/Reflection Paper Build Your IT Career.pdf" download
+                 class="btn-primary btn-primary-outline">
+                <i data-lucide="download"></i> Download
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ===== Document Viewer Modal ===== -->
+  <div class="doc-viewer-overlay" id="doc-viewer-modal">
+    <div class="doc-viewer-container">
+
+      <!-- Toolbar -->
+      <div class="doc-viewer-toolbar">
+        <div class="doc-toolbar-left">
+          <div class="doc-icon-wrapper">
+            <i data-lucide="file-text"></i>
+          </div>
+          <span class="doc-title-text" id="doc-viewer-title">Document</span>
+        </div>
+
+        <div class="doc-toolbar-center">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="doc-zoom-controls">
+              <button class="zoom-btn" id="zoom-out-btn" aria-label="Zoom Out"><i data-lucide="minus"></i></button>
+              <span class="zoom-level" id="zoom-percentage">100%</span>
+              <button class="zoom-btn" id="zoom-in-btn"  aria-label="Zoom In"><i data-lucide="plus"></i></button>
+              <button class="zoom-btn" id="zoom-reset-btn" aria-label="Reset Zoom"><i data-lucide="maximize-2"></i></button>
+            </div>
+            <!-- Page Indicator -->
+            <div id="doc-page-indicator" style="display: none;">1 / 1</div>
+          </div>
+        </div>
+
+        <div class="doc-toolbar-right">
+          <button class="doc-action-btn" id="doc-print-btn" title="Print">
+            <i data-lucide="printer"></i><span>Print</span>
+          </button>
+          <button class="doc-action-btn" id="doc-download-btn" title="Download .docx">
+            <i data-lucide="download"></i><span>Download</span>
+          </button>
+          <button class="doc-close-btn" id="doc-close-btn" aria-label="Close">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Document Body -->
+      <div class="doc-viewer-body" id="doc-viewer-body">
+        <div class="doc-paper-wrapper" id="doc-paper-wrapper">
+          <div class="doc-paper" id="doc-paper-content">
+            <!-- Rendered from .docx via docx-preview -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lucide CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- PDF.js CDN for PDF rendering in the document viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- JSZip (required dependency for docx-preview) -->
+  <script src="js/jszip.min.js"></script>
+
+  <!-- docx-preview library -->
+  <script src="js/docx-preview.min.js"></script>
+
+  <!-- Interactive Script -->
+  <script src="app.js" defer></script>
+</body>
+</html>

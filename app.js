@@ -794,6 +794,118 @@ document.addEventListener('DOMContentLoaded', () => {
         closeCertModal();
       }
     });
+
+    // --- Dynamic Certificate Preview Thumbnails ---
+    const renderCertCardThumbnails = () => {
+      const certCards = document.querySelectorAll('.cert-card');
+      if (!certCards.length) return;
+
+      const initPdfLib = () => {
+        if (typeof pdfjsLib !== 'undefined') {
+          try {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          } catch (e) {
+            console.warn('PDF.js worker init error:', e);
+          }
+          return true;
+        }
+        return false;
+      };
+
+      const showFallback = (skeleton) => {
+        if (!skeleton) return;
+        skeleton.innerHTML = `
+          <div class="cert-thumb-fallback">
+            <i data-lucide="award"></i>
+          </div>`;
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      };
+
+      const startRendering = (retries = 10) => {
+        if (!initPdfLib() && retries > 0) {
+          setTimeout(() => startRendering(retries - 1), 250);
+          return;
+        }
+
+        const hasPdfJs = typeof pdfjsLib !== 'undefined';
+
+        certCards.forEach((card, idx) => {
+          const imgSrc = card.getAttribute('data-img');
+          const canvas = card.querySelector('.cert-card-canvas');
+          const skeleton = card.querySelector('.cert-card-skeleton');
+          const preview = card.querySelector('.cert-card-preview');
+
+          if (!imgSrc) {
+            showFallback(skeleton);
+            return;
+          }
+
+          const cleanPath = imgSrc.split('?')[0].split('#')[0];
+          const ext = cleanPath.substring(cleanPath.lastIndexOf('.') + 1).toLowerCase();
+
+          if (ext === 'pdf') {
+            if (!hasPdfJs || !canvas) {
+              showFallback(skeleton);
+              return;
+            }
+
+            // Fallback safety timeout: never keep shimmering indefinitely if rendering hangs
+            const fallbackTimer = setTimeout(() => {
+              showFallback(skeleton);
+            }, 8000 + idx * 250);
+
+            // Stagger slightly so rendering feels smooth and doesn't block the UI thread
+            setTimeout(() => {
+              pdfjsLib.getDocument(encodeURI(imgSrc)).promise.then(pdf => {
+                return pdf.getPage(1);
+              }).then(page => {
+                const unscaledViewport = page.getViewport({ scale: 1.0 });
+                const containerWidth = preview ? (preview.clientWidth || 360) : 360;
+                // Render at 1.5x for crisp retina display
+                const scale = (containerWidth * 1.5) / unscaledViewport.width;
+                const viewport = page.getViewport({ scale });
+
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                const ctx = canvas.getContext('2d');
+
+                return page.render({
+                  canvasContext: ctx,
+                  viewport: viewport
+                }).promise;
+              }).then(() => {
+                clearTimeout(fallbackTimer);
+                if (skeleton) skeleton.style.display = 'none';
+                canvas.style.opacity = '1';
+              }).catch(err => {
+                clearTimeout(fallbackTimer);
+                console.warn('Certificate thumbnail render failed:', imgSrc, err);
+                showFallback(skeleton);
+              });
+            }, idx * 60);
+          } else if (['jpg', 'jpeg', 'png', 'webp', 'svg'].includes(ext)) {
+            const img = new Image();
+            img.src = imgSrc;
+            img.className = 'cert-card-img';
+            img.alt = card.getAttribute('data-title') || 'Certificate';
+            img.onload = () => {
+              if (skeleton) skeleton.style.display = 'none';
+              if (canvas) canvas.replaceWith(img);
+              img.style.opacity = '1';
+            };
+            img.onerror = () => {
+              showFallback(skeleton);
+            };
+          } else {
+            showFallback(skeleton);
+          }
+        });
+      };
+
+      startRendering();
+    };
+
+    renderCertCardThumbnails();
   }
 });
 
